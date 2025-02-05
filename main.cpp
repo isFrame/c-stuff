@@ -7,9 +7,9 @@ struct Libro {
   double costo;
 };
 void stampa_libro(const Libro &libro) {
-  std::cout << "\nId:" << libro.cod_num << "\t";
+  std::cout << "Id:" << libro.cod_num << "\t";
   std::cout << "Pagine: " << libro.num_pag << "\t";
-  std::cout << "Costo: " << libro.costo << "$\n" << std::endl;
+  std::cout << "Costo: " << libro.costo << "$" << std::endl;
 };
 void media(const Libro &libro) {
   if (libro.num_pag == 0) {
@@ -17,8 +17,8 @@ void media(const Libro &libro) {
     return;
   }
   float media_libro = (libro.costo / libro.num_pag);
-  std::cout << "\nId: " << libro.cod_num;
-  std::cout << "\t" << "Costo per pagina: " << media_libro << "$\n" << std::endl;
+  std::cout << "Id: " << libro.cod_num;
+  std::cout << "\t" << "Costo per pagina: " << media_libro << "$" << std::endl;
 }
 
 void inserisci_dati(Libro &libro) {
@@ -49,7 +49,7 @@ int main() {
                  "rinserisci\n4) Esci\n";
     std::cout << "\nInput: ";
     std::cin >> opzione;
-
+    std::cout<<"\n";
     while (opzione > 4) {
       std::cout << "Opzione non esiste riprova: ";
       std::cin >> opzione;
@@ -63,8 +63,9 @@ int main() {
       break;
     case 2:
       for (int i = 0; i < qnum; i++) {
-        stampa_libro(libri[i]);
+        stampa_libro(libri[i]); 
       }
+      std::cout<<"\n";
       break;
     case 3:
       libri.clear();
