@@ -2,13 +2,18 @@
 #include <vector>
 #include "prodotti.h"
 
-std::vector<Prodotto> prodotti{
-    {1, "boh", 20, 2.50, 3.00},
-    {2, "Ciao", 20, 2.50, 3.00},
-    {3, "Hey", 20, 2.50, 3.00},
-};
+std::vector<Prodotto> prodotti;
 
 int main() {
+  int pnum; //numero di prodotti
+  std::cout<<"Quanti prodotti vuole inserire?: ";
+  std::cin>>pnum;
+  for (int i=0; i<pnum; i++) {
+    Prodotto temp_prod;
+    insert(temp_prod , i);
+    prodotti.push_back(temp_prod);
+  }
+
   while (true) {
     int input;
     int id;
@@ -17,17 +22,17 @@ int main() {
     std::cin >> input;
     switch (input) {
     case 1:
-      for (int i = 0; i < 3; i++) {
+      for (int i = 0; i < pnum; i++) {
         print(prodotti[i]);
       }
       break;
     case 2:
-      for (int i = 0; i < 3; i++) {
+      for (int i = 0; i < pnum; i++) {
         print(prodotti[i]);
       }
       std::cout << "inserire ID: ";
       std::cin >> id;
-      for (int i = 0; i < 3; i++) {
+      for (int i = 0; i < pnum; i++) {
         if (prodotti[i].ID == id) {
           buy(prodotti[i]);
           found = true;
@@ -40,7 +45,7 @@ int main() {
       break;
     case 3:
       
-      for (int i = 0; i < 3; i++) {
+      for (int i = 0; i < pnum; i++) {
         print(prodotti[i]);
       }
       std::cout << "inserire ID: ";
@@ -61,7 +66,7 @@ int main() {
     case 4:
       std::cout<<"inserisci id: ";
       std::cin>>id;
-      for (int i=0; i<3; i++) {
+      for (int i=0; i<pnum; i++) {
         if(prodotti[i].ID==id){
           print(prodotti[i]);
           found=true;

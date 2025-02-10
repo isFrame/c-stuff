@@ -26,3 +26,17 @@ void sell(Prodotto &a) {
   a.num_prod = a.num_prod + sellq;
   std::cout << "Vendita avvenuta con sucesso!\n";
 }
+void insert(Prodotto &a ,int &i){
+  std::cout<<"Inserisci i dati del prodotto: "<< i+1<<"\n";
+  std::cout<<"Inserisci ID: ";
+  std::cin>>a.ID;
+  std::cout<<"Inserisci nome del prodotto: ";
+  std::cin>>a.prod;
+  std::cout<<"Inserisci Quantita: ";
+  std::cin>>a.num_prod;
+  std::cout<<"Inserisci Prezzo Di Vendita: ";
+  std::cin>>a.prez_vendita;
+  std::cout<<"Inserisci Prezzo Di Acquisto: ";
+  std::cin>>a.prez_acquisto;
+  std::cout<<"\n";
+}
