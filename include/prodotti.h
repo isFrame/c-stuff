@@ -12,5 +12,4 @@ struct Prodotto {
   void print(const Prodotto &a);
   void buy(Prodotto &a);
   void sell(Prodotto &a);
-
 #endif

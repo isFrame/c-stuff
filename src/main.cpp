@@ -13,7 +13,7 @@ int main() {
     int input;
     int id;
     bool found = false;
-    std::cout << "1) List\n2) Compra\n3) Vendi\n4) Esci\n\nInput:";
+    std::cout << "1) List\n2) Compra\n3) Vendi\n4) Cerca\n5) Esci\n\nInput:";
     std::cin >> input;
     switch (input) {
     case 1:
@@ -56,8 +56,21 @@ int main() {
         break;
       }
       break;
-    case 4:
+    case 5:
       return 0;
+    case 4:
+      std::cout<<"inserisci id: ";
+      std::cin>>id;
+      for (int i=0; i<3; i++) {
+        if(prodotti[i].ID==id){
+          print(prodotti[i]);
+          found=true;
+        }
+      }
+      if(!found){
+        std::cout<<"ID non esistente\n";
+      }
+      break;
     default:
       std::cout << "Opzione non esistente";
     }
