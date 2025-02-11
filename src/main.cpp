@@ -8,6 +8,11 @@ int main() {
   int pnum; //numero di prodotti
   std::cout<<"Quanti prodotti vuole inserire?: ";
   std::cin>>pnum;
+  while (pnum<1) {
+    std::cout<<"Errore:inserire almeno un prododotto \nRiprova:";
+    std::cin>>pnum;
+
+  }
   for (int i=0; i<pnum; i++) {
     Prodotto temp_prod;
     insert(temp_prod , i);
