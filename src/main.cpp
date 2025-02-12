@@ -26,7 +26,7 @@ int main() {
     int input;
     int id;
     bool found = false;
-    std::cout << "1) List\n2) Compra\n3) Vendi\n4) Cerca\n5) Esci\n\nInput:";
+    std::cout << "1) List\n2) Compra\n3) Vendi\n4) Cerca\n5)Crea .csv 6) Esci\n\nInput:";
     std::cin >> input;
     switch (input) {
     case 1:
@@ -69,7 +69,7 @@ int main() {
         break;
       }
       break;
-    case 5:
+    case 6:
       return 0;
     case 4:
       std::cout<<"inserisci id: ";
@@ -84,7 +84,7 @@ int main() {
         std::cout<<"ID non esistente\n";
       }
       break;
-    case 6:
+    case 5:
       create_csv(prodotti, filename);
       break;
     default:
