@@ -26,7 +26,7 @@ int main() {
     int input;
     int id;
     bool found = false;
-    std::cout << "1) List\n2) Compra\n3) Vendi\n4) Cerca\n5)Crea .csv 6) Esci\n\nInput:";
+    std::cout << "1) List\n2) Compra\n3) Vendi\n4) Cerca\n5) Crea .csv \n6) Esci\n\nInput:";
     std::cin >> input;
     switch (input) {
     case 1:
