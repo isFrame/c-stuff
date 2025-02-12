@@ -1,6 +1,7 @@
 #ifndef PRODOTTI_H
 #define PRODOTTI_H
 #include <string>
+#include <vector>
 
 struct Prodotto {
     int ID;
@@ -13,5 +14,5 @@ struct Prodotto {
   void buy(Prodotto &a);
   void sell(Prodotto &a);
   void insert(Prodotto &a,int &i);
-  void input_validation(int &a);
+  void create_csv(const std::vector<Prodotto> &prodotti,std::string &filename);
 #endif

@@ -1,14 +1,16 @@
 #include <iostream>
+#include <string>
 #include <vector>
 #include "prodotti.h"
 
 std::vector<Prodotto> prodotti;
+std::string filename="Magazzino.csv";
 
 int main() {
   int pnum; //numero di prodotti
   std::cout<<"Quanti prodotti vuole inserire?: ";
   std::cin>>pnum;
-  input_validation(pnum);
+  //input_validation(pnum);
   while (pnum<1) {
     std::cout<<"Errore:inserire almeno un prododotto \nRiprova:";
     std::cin>>pnum;
@@ -26,7 +28,6 @@ int main() {
     bool found = false;
     std::cout << "1) List\n2) Compra\n3) Vendi\n4) Cerca\n5) Esci\n\nInput:";
     std::cin >> input;
-    input_validation(input);
     switch (input) {
     case 1:
       for (int i = 0; i < pnum; i++) {
@@ -39,7 +40,6 @@ int main() {
       }
       std::cout << "inserire ID: ";
       std::cin >> id;
-      input_validation(id);
       for (int i = 0; i < pnum; i++) {
         if (prodotti[i].ID == id) {
           buy(prodotti[i]);
@@ -58,7 +58,6 @@ int main() {
       }
       std::cout << "inserire ID: ";
       std::cin >> id;
-      input_validation(id);
       for (int i = 0; i < 3; i++) {
         if (prodotti[i].ID == id) {
           sell(prodotti[i]);
@@ -75,7 +74,6 @@ int main() {
     case 4:
       std::cout<<"inserisci id: ";
       std::cin>>id;
-      input_validation(id);
       for (int i=0; i<pnum; i++) {
         if(prodotti[i].ID==id){
           print(prodotti[i]);
@@ -86,8 +84,12 @@ int main() {
         std::cout<<"ID non esistente\n";
       }
       break;
+    case 6:
+      create_csv(prodotti, filename);
+      break;
     default:
       std::cout << "Opzione non esistente";
+
     }
   }
 }
