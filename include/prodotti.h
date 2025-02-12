@@ -13,4 +13,5 @@ struct Prodotto {
   void buy(Prodotto &a);
   void sell(Prodotto &a);
   void insert(Prodotto &a,int &i);
+  void input_validation(int &a);
 #endif
