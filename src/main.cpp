@@ -1,66 +1,56 @@
+#include "prodotti.h"
 #include <iostream>
 #include <string>
 #include <vector>
-#include "prodotti.h"
 
 std::vector<Prodotto> prodotti;
-std::string filename="Magazzino.csv";
+std::string filename = "Magazzino.csv";
 
 int main() {
-  int pnum; //numero di prodotti
-  std::cout<<"Quanti prodotti vuole inserire?: ";
-  std::cin>>pnum;
-  //input_validation(pnum);
-  while (pnum<1) {
-    std::cout<<"Errore:inserire almeno un prododotto \nRiprova:";
-    std::cin>>pnum;
-
-  }
-  for (int i=0; i<pnum; i++) {
-    Prodotto temp_prod;
-    insert(temp_prod , i);
-    prodotti.push_back(temp_prod);
-  }
-
   while (true) {
     int input;
     int id;
     bool found = false;
-    std::cout << "1) List\n2) Compra\n3) Vendi\n4) Cerca\n5) Crea .csv \n6) Esci\n\nInput:";
+    std::cout << "1) Inserisci \n2) List\n3) Compra\n4) Vendi\n5) Cerca\n6) "
+                 "Crea .csv \n7) Esci\n\nInput:";
     std::cin >> input;
     switch (input) {
     case 1:
+      int pnum;
+      std::cout << "Quanti prodotti vuole inserire?: ";
+      std::cin >> pnum;
+      while (pnum < 1) {
+        std::cout << "Errore:inserire almeno un prododotto \nRiprova:";
+        std::cin >> pnum;
+      }
       for (int i = 0; i < pnum; i++) {
-        print(prodotti[i]);
+        Prodotto temp_prod;
+        insert(temp_prod, i);
+        prodotti.push_back(temp_prod);
       }
       break;
     case 2:
-      for (int i = 0; i < pnum; i++) {
-        print(prodotti[i]);
-      }
-      std::cout << "inserire ID: ";
-      std::cin >> id;
-      for (int i = 0; i < pnum; i++) {
-        if (prodotti[i].ID == id) {
-          buy(prodotti[i]);
-          found = true;
-        }
-      }
-      if (!found) {
-        std::cout << "ID non esistente!\n\n";
+      if (prodotti.empty()){
+        std::cout<<"Nessun prodotto registrato"<<std::endl;
         break;
+      }
+      for (const auto &prodotto : prodotti) {
+        print(prodotto);
       }
       break;
     case 3:
-      
-      for (int i = 0; i < pnum; i++) {
-        print(prodotti[i]);
+      if (prodotti.empty()){
+        std::cout<<"Nessun prodotto registrato"<<std::endl;
+        break;
+      }
+      for (const auto &prodotto : prodotti) {
+        print(prodotto);
       }
       std::cout << "inserire ID: ";
       std::cin >> id;
-      for (int i = 0; i < 3; i++) {
-        if (prodotti[i].ID == id) {
-          sell(prodotti[i]);
+      for (auto &prodotto : prodotti) {
+        if (prodotto.ID == id) {
+          buy(prodotto);
           found = true;
         }
       }
@@ -69,27 +59,56 @@ int main() {
         break;
       }
       break;
-    case 6:
-      return 0;
     case 4:
-      std::cout<<"inserisci id: ";
-      std::cin>>id;
-      for (int i=0; i<pnum; i++) {
-        if(prodotti[i].ID==id){
-          print(prodotti[i]);
-          found=true;
+      if (prodotti.empty()){
+        std::cout<<"Nessun prodotto registrato"<<std::endl;
+        break;
+      }
+      for (const auto &prodotto : prodotti) {
+        print(prodotto);
+      }
+      std::cout << "inserire ID: ";
+      std::cin >> id;
+      for (auto &prodotto : prodotti) {
+        if (prodotto.ID == id) {
+          sell(prodotto);
+          found = true;
         }
       }
-      if(!found){
-        std::cout<<"ID non esistente\n";
+      if (!found) {
+        std::cout << "ID non esistente!\n\n";
+        break;
       }
       break;
     case 5:
+      if (prodotti.empty()){
+        std::cout<<"Nessun prodotto registrato"<<std::endl;
+        break;
+      }
+      std::cout << "inserisci id: ";
+      std::cin >> id;
+      for (int i = 0; i < pnum; i++) {
+        if (prodotti[i].ID == id) {
+          print(prodotti[i]);
+          found = true;
+        }
+      }
+      if (!found) {
+        std::cout << "ID non esistente\n";
+      }
+      break;
+    case 6:
+      if (prodotti.empty()){
+        std::cout<<"Nessun prodotto registrato"<<std::endl;
+        break;
+      }
       create_csv(prodotti, filename);
       break;
     default:
       std::cout << "Opzione non esistente";
 
+    case 7:
+      return 0;
     }
   }
 }
