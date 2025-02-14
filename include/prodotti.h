@@ -15,4 +15,5 @@ struct Prodotto {
   void sell(Prodotto &a);
   void insert(Prodotto &a,int &i);
   void create_csv(const std::vector<Prodotto> &prodotti,std::string &filename);
+  int input_validation(const std::string &message);
 #endif
