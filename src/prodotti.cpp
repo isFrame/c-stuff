@@ -30,18 +30,18 @@ void sell(Prodotto &a) {
 }
 void insert(Prodotto &a ,int &i){
   std::cout<<"Inserisci i dati del prodotto: "<< i+1<<"\n";
-  std::cout<<"Inserisci ID: ";
-  std::cin>>a.ID;
-  
+  //Id del prodotto
+  a.ID=input_validation("Inserisci ID: ");
+  //Nome del prodotto
   std::cout<<"Inserisci nome del prodotto: ";
   std::cin.ignore();
   std::getline(std::cin,a.prod);
-  std::cout<<"Inserisci Quantita: ";
-  std::cin>>a.num_prod;
-  std::cout<<"Inserisci Prezzo Di Vendita: ";
-  std::cin>>a.prez_vendita;
-  std::cout<<"Inserisci Prezzo Di Acquisto: ";
-  std::cin>>a.prez_acquisto;
+  //Quantita di prodotto
+  a.num_prod=input_validation("Inserisci Quantita: ");
+  //Prezzo di vendita
+  a.prez_vendita=input_validation("Inserisci Prezzo Di Vendita: ");
+  //Prezzo di acquisto
+  a.prez_acquisto=input_validation("Inserisci Prezzo Di Acquisto: ");
   std::cout<<"\n";
 }
 
@@ -56,4 +56,14 @@ void create_csv(const std::vector<Prodotto>&prodotti,std::string &filename){
   else {
     std::cout<<"Impossibile aprire il file";
   }
+}
+int input_validation(const std::string &message){
+  int input;
+  std::cout<<message;
+  while (!(std::cin>>input)){
+    std::cout<<"Inserire un numero:";
+    std::cin.clear();
+    std::cin.ignore(10000,'\n');
+  }
+  return input;
 }

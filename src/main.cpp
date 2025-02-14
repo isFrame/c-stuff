@@ -13,12 +13,11 @@ int main() {
     bool found = false;
     std::cout << "1) Inserisci \n2) List\n3) Compra\n4) Vendi\n5) Cerca\n6) "
                  "Crea .csv \n7) Esci\n\nInput:";
-    std::cin >> input;
+    input=input_validation("Input: ");
     switch (input) {
     case 1:
       int pnum;
-      std::cout << "Quanti prodotti vuole inserire?: ";
-      std::cin >> pnum;
+      pnum=input_validation("Quanti prodotti vuoi inserire?: ");
       while (pnum < 1) {
         std::cout << "Errore:inserire almeno un prododotto \nRiprova:";
         std::cin >> pnum;
