@@ -12,15 +12,14 @@ int main() {
     int id;
     bool found = false;
     std::cout << "1) Inserisci \n2) List\n3) Compra\n4) Vendi\n5) Cerca\n6) "
-                 "Crea .csv \n7) Esci\n\nInput:";
+                 "Crea .csv \n7) Esci\n\n";
     input=input_validation("Input: ");
     switch (input) {
     case 1:
       int pnum;
       pnum=input_validation("Quanti prodotti vuoi inserire?: ");
       while (pnum < 1) {
-        std::cout << "Errore:inserire almeno un prododotto \nRiprova:";
-        std::cin >> pnum;
+        pnum=input_validation("Errore:inserire almeno un prododotto \nRiprova:");
       }
       for (int i = 0; i < pnum; i++) {
         Prodotto temp_prod;
@@ -45,8 +44,7 @@ int main() {
       for (const auto &prodotto : prodotti) {
         print(prodotto);
       }
-      std::cout << "inserire ID: ";
-      std::cin >> id;
+      id=input_validation("inserire ID: ");
       for (auto &prodotto : prodotti) {
         if (prodotto.ID == id) {
           buy(prodotto);
@@ -66,8 +64,7 @@ int main() {
       for (const auto &prodotto : prodotti) {
         print(prodotto);
       }
-      std::cout << "inserire ID: ";
-      std::cin >> id;
+      id=input_validation("inserire ID: ");
       for (auto &prodotto : prodotti) {
         if (prodotto.ID == id) {
           sell(prodotto);
@@ -84,11 +81,10 @@ int main() {
         std::cout<<"Nessun prodotto registrato"<<std::endl;
         break;
       }
-      std::cout << "inserisci id: ";
-      std::cin >> id;
-      for (int i = 0; i < pnum; i++) {
-        if (prodotti[i].ID == id) {
-          print(prodotti[i]);
+      id=input_validation("inserire ID: ");
+      for (const auto& prodotto:prodotti) {
+        if (prodotto.ID == id) {
+          print(prodotto);
           found = true;
         }
       }

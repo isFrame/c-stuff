@@ -10,22 +10,18 @@ void print(const Prodotto &a) {
             << "\tPrezzo acquisto: " << a.prez_acquisto << "\n";
 }
 void buy(Prodotto &a) {
-  int buyq;
-  std::cout << "Quanto vuole comprare: ";
-  std::cin >> buyq;
-  while (a.num_prod - buyq < 0) {
+  int BuyQuantity=input_validation("Quanto vuole comprare: ");
+  while (a.num_prod - BuyQuantity < 0) {
     std::cout << "Non ci sono abbastanza prodotti \tProdotti disponibili:"
-              << a.num_prod << "\nRiprova:";
-    std::cin >> buyq;
+              << a.num_prod;
+    BuyQuantity=input_validation("\nRiprova: ");
   }
-  a.num_prod = a.num_prod - buyq;
+  a.num_prod -=BuyQuantity;
   std::cout << "Acquisto avvenuto con successo!\n";
 }
 void sell(Prodotto &a) {
-  int sellq;
-  std::cout << "Quanto vuole vendere: ";
-  std::cin >> sellq;
-  a.num_prod = a.num_prod + sellq;
+  int SellQuantity=input_validation("Quanto vuole vendere: ");
+  a.num_prod-=SellQuantity;
   std::cout << "Vendita avvenuta con sucesso!\n";
 }
 void insert(Prodotto &a ,int &i){
