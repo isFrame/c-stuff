@@ -9,13 +9,11 @@ std::string filename = "Magazzino.csv";
 int main() {
   while (true) {
     int input;
-    int id;
-    bool found = false;
     std::cout << "1) Inserisci \n2) List\n3) Compra\n4) Vendi\n5) Cerca\n6) "
                  "Crea .csv \n7) Esci\n\n";
     input=input_validation("Input: ");
     switch (input) {
-    case 1:
+    case 1:{
       int pnum;
       pnum=input_validation("Quanti prodotti vuoi inserire?: ");
       while (pnum < 1) {
@@ -23,11 +21,12 @@ int main() {
       }
       for (int i = 0; i < pnum; i++) {
         Prodotto temp_prod;
-        insert(temp_prod, i);
+        insert(temp_prod, i,prodotti);
         prodotti.push_back(temp_prod);
       }
       break;
-    case 2:
+    }
+    case 2:{
       if (prodotti.empty()){
         std::cout<<"Nessun prodotto registrato"<<std::endl;
         break;
@@ -36,7 +35,10 @@ int main() {
         print(prodotto);
       }
       break;
-    case 3:
+    }
+    case 3:{
+      int id;
+      bool found=false;
       if (prodotti.empty()){
         std::cout<<"Nessun prodotto registrato"<<std::endl;
         break;
@@ -56,7 +58,10 @@ int main() {
         break;
       }
       break;
-    case 4:
+    }
+    case 4:{
+      int id;
+      int found=false;
       if (prodotti.empty()){
         std::cout<<"Nessun prodotto registrato"<<std::endl;
         break;
@@ -76,7 +81,10 @@ int main() {
         break;
       }
       break;
-    case 5:
+    }
+    case 5:{
+      int id;
+      bool found=false;
       if (prodotti.empty()){
         std::cout<<"Nessun prodotto registrato"<<std::endl;
         break;
@@ -92,13 +100,15 @@ int main() {
         std::cout << "ID non esistente\n";
       }
       break;
-    case 6:
+    }
+    case 6:{
       if (prodotti.empty()){
         std::cout<<"Nessun prodotto registrato"<<std::endl;
         break;
       }
       create_csv(prodotti, filename);
       break;
+    }
     default:
       std::cout << "Opzione non esistente";
 

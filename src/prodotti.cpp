@@ -11,23 +11,28 @@ void print(const Prodotto &a) {
 }
 void buy(Prodotto &a) {
   int BuyQuantity=input_validation("Quanto vuole comprare: ");
-  while (a.num_prod - BuyQuantity < 0) {
-    std::cout << "Non ci sono abbastanza prodotti \tProdotti disponibili:"
-              << a.num_prod;
-    BuyQuantity=input_validation("\nRiprova: ");
-  }
-  a.num_prod -=BuyQuantity;
+  a.num_prod +=BuyQuantity;
   std::cout << "Acquisto avvenuto con successo!\n";
 }
 void sell(Prodotto &a) {
   int SellQuantity=input_validation("Quanto vuole vendere: ");
+  while (a.num_prod - SellQuantity < 0) {
+    std::cout << "Non ci sono abbastanza prodotti \tProdotti disponibili:"
+              << a.num_prod;
+    SellQuantity=input_validation("\nRiprova: ");
+  }
   a.num_prod-=SellQuantity;
   std::cout << "Vendita avvenuta con sucesso!\n";
 }
-void insert(Prodotto &a ,int &i){
+void insert(Prodotto &a ,int &i,std::vector<Prodotto>&prodotti){
   std::cout<<"Inserisci i dati del prodotto: "<< i+1<<"\n";
   //Id del prodotto
   a.ID=input_validation("Inserisci ID: ");
+  for (auto & p: prodotti) {
+    while (p.ID==a.ID) {
+      a.ID=input_validation("ID già esistente, Riprova: ");
+    }
+  }
   //Nome del prodotto
   std::cout<<"Inserisci nome del prodotto: ";
   std::cin.ignore();

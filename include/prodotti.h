@@ -13,7 +13,7 @@ struct Prodotto {
   void print(const Prodotto &a);
   void buy(Prodotto &a);
   void sell(Prodotto &a);
-  void insert(Prodotto &a,int &i);
+  void insert(Prodotto &a,int &i,std::vector<Prodotto>&prodotti);
   void create_csv(const std::vector<Prodotto> &prodotti,std::string &filename);
   int input_validation(const std::string &message);
 #endif
