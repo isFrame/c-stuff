@@ -26,23 +26,18 @@ void sell(Prodotto &a) {
 }
 void insert(Prodotto &a ,int &i,std::vector<Prodotto>&prodotti){
   std::cout<<"Inserisci i dati del prodotto: "<< i+1<<"\n";
-  //Id del prodotto
   a.ID=input_validation("Inserisci ID: ");
   for (auto & p: prodotti) {
     while (p.ID==a.ID) {
       a.ID=input_validation("ID già esistente, Riprova: ");
     }
   }
-  //Nome del prodotto
   std::cout<<"Inserisci nome del prodotto: ";
   std::cin.ignore();
   std::getline(std::cin,a.prod);
-  //Quantita di prodotto
   a.num_prod=input_validation("Inserisci Quantita: ");
-  //Prezzo di vendita
-  a.prez_vendita=input_validation("Inserisci Prezzo Di Vendita: ");
-  //Prezzo di acquisto
-  a.prez_acquisto=input_validation("Inserisci Prezzo Di Acquisto: ");
+  a.prez_vendita=double_validation("Inserisci Prezzo Di Vendita: ");
+  a.prez_acquisto=double_validation("Inserisci Prezzo Di Acquisto: ");
   std::cout<<"\n";
 }
 
@@ -67,4 +62,36 @@ int input_validation(const std::string &message){
     std::cin.ignore(10000,'\n');
   }
   return input;
+}
+double double_validation(const std::string &message){
+  double input;
+  std::cout<<message;
+  while (!(std::cin>>input)){
+    std::cout<<"Inserire un numero:";
+    std::cin.clear();
+    std::cin.ignore(10000,'\n');
+  }
+  return input;
+}
+bool check_password(const std::string PASSWORD){
+  const int TENTATIVI=3;
+  int num_tentativi=0;
+  std::string tentativo;
+  std::cout<<"Inserisci Password: ";
+  std::cin>>tentativo;
+  while (num_tentativi<TENTATIVI) {
+    if (tentativo==PASSWORD) {
+      return true;
+    }
+    num_tentativi++;
+    if(num_tentativi<TENTATIVI){
+      std::cout<<"Password errata \tTentativi rimanenti:"<<TENTATIVI-num_tentativi<<"\nInserisci Password: ";
+      std::cin>>tentativo;
+    }
+    
+  }
+  std::cout<<"Tentativi esauriti!"<<std::endl;
+  return false;
+  
+  
 }

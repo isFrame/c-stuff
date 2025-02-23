@@ -16,4 +16,6 @@ struct Prodotto {
   void insert(Prodotto &a,int &i,std::vector<Prodotto>&prodotti);
   void create_csv(const std::vector<Prodotto> &prodotti,std::string &filename);
   int input_validation(const std::string &message);
+  bool check_password(const std::string PASSWORD);
+  double double_validation(const std::string &message);
 #endif
