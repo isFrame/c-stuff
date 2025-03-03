@@ -4,18 +4,18 @@
 #include <vector>
 
 struct Prodotto {
-    int ID;
-    std::string prod;
-    int num_prod;
-    double prez_vendita;
-    double prez_acquisto;
-  };
-  void print(const Prodotto &a);
-  void buy(Prodotto &a);
-  void sell(Prodotto &a);
-  void insert(Prodotto &a,int &i,std::vector<Prodotto>&prodotti);
-  void create_csv(const std::vector<Prodotto> &prodotti,std::string &filename);
-  int input_validation(const std::string &message);
-  bool check_password(const std::string PASSWORD);
-  double double_validation(const std::string &message);
+  int ID;
+  std::string prod;
+  int num_prod;
+  double prez_vendita;
+  double prez_acquisto;
+};
+void print(const Prodotto &a);
+void buy(Prodotto &a);
+void sell(Prodotto &a);
+void insert(Prodotto &a, int &i, std::vector<Prodotto> &prodotti);
+void create_csv(const std::vector<Prodotto> &prodotti, std::string &filename);
+int input_validation(const std::string &message);
+bool check_password(const std::string PASSWORD);
+double double_validation(const std::string &message);
 #endif
