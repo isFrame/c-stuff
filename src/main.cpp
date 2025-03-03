@@ -12,7 +12,7 @@ int main() {
   if (!pass_correct) {
     return 0;
   }
-  while (true) {
+  while (pass_correct) {
     int input;
     std::cout << "1) Inserisci \n2) List\n3) Compra\n4) Vendi\n5) Cerca\n6) "
                  "Crea .csv \n7) Esci\n\n";
