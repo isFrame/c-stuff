@@ -9,9 +9,6 @@ std::string filename = "Magazzino.csv";
 
 int main() {
   bool pass_correct = check_password(PASSWORD);
-  if (!pass_correct) {
-    return 0;
-  }
   while (pass_correct) {
     int input;
     std::cout << "1) Inserisci \n2) List\n3) Compra\n4) Vendi\n5) Cerca\n6) "
@@ -122,4 +119,5 @@ int main() {
       return 0;
     }
   }
+  return 0;
 }
